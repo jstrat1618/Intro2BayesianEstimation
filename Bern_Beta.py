@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import beta
 
-#Define parametere and sample size
+#Define parameter and sample size
 theta , n = 0.5, 10
 
 #Generate Data
