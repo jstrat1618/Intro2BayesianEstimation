@@ -1,3 +1,5 @@
+import numpy as np
+
 #Define parameter and sample size
 theta , n = 0.5, 10
 
