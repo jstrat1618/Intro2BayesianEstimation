@@ -17,15 +17,25 @@ def posterior(N):
         list_eval_points.append(eval)
     out = np.array(list_eval_points)
     return(out)    
-        
-        
-    
-x = np.array(range(1,500))
-y = posterior(x)
 
-plt.plot(x,y)
+def prior(x):
+    diff = x.max() - x.min()
+    out = np.repeat(1/diff, len(x))
+    return(out)
+    
+x = np.array(range(1,501))
+
+plt.plot(x,prior(x))
+plt.xlabel("N")
+plt.ylabel(r'$\pi(N)$')
+plt.title("Prior Distribtuion")
+plt.show()
+
+
+plt.plot(x,posterior(x))
 plt.xlabel("N")
 plt.ylabel(r'$\pi(N | x)$')
 plt.title("Posterior Distribtuion")
 plt.show()
+
 
