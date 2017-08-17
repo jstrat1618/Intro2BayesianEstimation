@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.misc import comb
 
-m = 60
-k = 3
+m = 105
+k = 5
 def eval_point(n):
     if n <m:
         return(0)
