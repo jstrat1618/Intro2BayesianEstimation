@@ -22,6 +22,18 @@ def prior(n):
     diff = n.max() - n.min()
     out = np.repeat(1/diff, len(n))
     return(out)
+
+def posterior_mean(M=m, K=k):
+    numer = (M-1)*(K-1)
+    denom = K-2
+    return(numer/denom)
+    
+def posterior_stdev(M=m, K=k):
+    numer = (m-1)*(k-1)*(m-k+1)
+    denom = (k-3)*(k-2)**2
+    var = numer/denom
+    std_dev = np.sqrt(var)
+    return(std_dev)
     
 N = np.array(range(1,201))
 
