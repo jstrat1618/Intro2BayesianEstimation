@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.misc import comb
 
 m = 64
-k = 5
+k = 4
 def eval_point(n):
     if n <m:
         return(0)
