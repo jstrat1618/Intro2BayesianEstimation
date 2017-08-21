@@ -25,7 +25,20 @@ plt.ylabel(r'$\pi(\theta)$')
 plt.title("Prior Distribtuion")
 plt.show()
 
+#Define the Likelihood
+def Lhood_bern(theta):
+    out = theta**x.sum() *(1-theta)**(len(x) - x.sum())
+    return(out)
 
+#Plot the Likelihood
+plt.plot(xgrid, Lhood_bern(xgrid))
+plt.xlabel(r'$\theta$')
+plt.ylabel(r'$L(\theta | x)$')
+plt.title("Likelihood")
+plt.show()    
+
+
+    
 #Define Posterior hyperparameters
 posterior_alpha = prior_alpha + x.sum()
 posterior_beta = prior_beta + n - x.sum()
