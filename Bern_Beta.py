@@ -45,6 +45,12 @@ plt.show()
 posterior_alpha = prior_alpha + x.sum()
 posterior_beta = prior_beta + n - x.sum()
 
+#Create functions to compute posterior mean and variance
+def beta_mean(alpha, beta):
+    return(alpha/(alpha + beta))
+    
+
+
 #Evaluate the postior over the grid
 posterior_of_xgrid = beta.pdf(xgrid, a = posterior_alpha, b = posterior_beta)
 #Plot the posterior
