@@ -8,7 +8,7 @@ def eval_point(n):
     if n <m:
         return(0)
     else:
-        return((k-1)/k *comb(m-1,k-1)/comb(n, k))
+        return((k-1)/m *comb(m,k)/comb(n, k))
 
 def posterior(n):
     list_eval_points = []
@@ -56,7 +56,9 @@ plt.show()
 
 fig, ax = plt.subplots()
 ax.stem(N, posterior(N))
+plt.xlabel("N")
+plt.ylabel(r'$\pi(N | x)$')
+plt.title("Posterior Distribtuion")
 plt.show()
-
 
 
