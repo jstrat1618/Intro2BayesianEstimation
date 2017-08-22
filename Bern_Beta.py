@@ -45,18 +45,28 @@ plt.show()
 posterior_alpha = prior_alpha + x.sum()
 posterior_beta = prior_beta + n - x.sum()
 
-#Create functions to compute posterior mean and variance
-def beta_mean(alpha, beta):
-    return(alpha/(alpha + beta))
-    
+#Create functions to compute posterior mean and standard deviation
+def beta_mean(a, b):
+    return(a/(a + b))
 
+def beta_stdv(a, b):
+    denom = (a + b)**2 *(a + b + 1)
+    vrnc = a*b/denom
+    return(np.sqrt(vrnc))
+
+post_mean = beta_mean(posterior_alpha, posterior_beta)
+post_stdv = beta_stdv(posterior_alpha, posterior_beta)
 
 #Evaluate the postior over the grid
 posterior_of_xgrid = beta.pdf(xgrid, a = posterior_alpha, b = posterior_beta)
 #Plot the posterior
 plt.plot(xgrid, posterior_of_xgrid)
+plt.axvline(x=post_mean, color='orange', linestyle='--')
 plt.xlabel(r'$\theta$')
 plt.ylabel(r'$\pi(\theta | x)$')
 plt.title("Posterior Distribtuion")
 plt.show()
+
+print("The posterior mean is "+ str(post_mean) + 
+" and the posterior standard deviation is " + str(post_stdv ))
 
