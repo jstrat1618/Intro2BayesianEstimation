@@ -6,7 +6,7 @@ from scipy.stats import beta
 prior_alpha, prior_beta = 1,1
 
 
-xgrid = np.arange(0,1,0.01)
+xgrid = np.arange(-0.02,1.02,0.01)
 #Evaluate the prior over the grid
 prior_of_xgrid = beta.pdf(xgrid, a = prior_alpha, b = prior_beta)
 
@@ -20,7 +20,7 @@ plt.show()
 
 
 #Define parameter and sample size
-theta , n = 0.5, 10
+theta , n = 0.75, 100
 
 #Generate Data
 x = np.random.binomial(1, theta, n)
@@ -57,6 +57,10 @@ def beta_stdv(a, b):
 post_mean = beta_mean(posterior_alpha, posterior_beta)
 post_stdv = beta_stdv(posterior_alpha, posterior_beta)
 
+#Compute Credible set
+level = 0.05
+lower, upper = beta.ppf(level / 2, a=posterior_alpha, b=posterior_beta), beta.ppf(1 - level / 2, a=posterior_alpha, b=posterior_beta)
+
 #Evaluate the postior over the grid
 posterior_of_xgrid = beta.pdf(xgrid, a = posterior_alpha, b = posterior_beta)
 #Plot the posterior
@@ -69,4 +73,7 @@ plt.show()
 
 print("The posterior mean is "+ str(post_mean) + 
 " and the posterior standard deviation is " + str(post_stdv ))
+
+print("For our credible set, our lower bound is  "+ str(lower) + 
+" and our upper bound is " + str(upper))
 
